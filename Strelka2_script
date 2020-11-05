@@ -2,6 +2,7 @@
 #Run strelka2 against multiple files
 
 #this list is for the /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory path
+#lists all of the directories with names having BC in them (I did this to get rid of the other files in this directory, so that only the individual file sampleIDs were placed into the config fie below)
 LIST=$(ls -d *[BC]*)
 
 for SAMPLEID in $LIST
@@ -13,7 +14,7 @@ do
         --runDir /projects/rmorin_scratch/BC_ctDNA_cohort/strelka/$SAMPLEID
 done
 
-
+#this part runs each workflow script through stelka2
 config=$(find /projects/rmorin_scratch/BC_ctDNA_cohort/strelka/ -type f -name 'runWorkflow.py')
 
 for workflow in $config
