@@ -1,0 +1,22 @@
+#! /bin/bash
+#Run strelka2 against multiple files
+
+#this list is for the /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory path
+LIST=$(ls -d *[BC]*)
+
+for SAMPLEID in $LIST
+do
+    /projects/rmorin_scratch/BC_ctDNA_cohort/strelka/strelka-2.9.10.centos6_x86_64/bin/configureStrelkaSomaticWorkflow.py \
+        --normalBam /projects/NCI_Burkitts/data/genome_bams_grch38/BLGSP-71-06-00286-99A-01D.bam \
+        --tumorBam /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory/$SAMPLEID/results/$SAMPLEID.collapse.sort.bam \
+        --referenceFasta /home/krdaley/GRCh38_no_alt.fa \
+        --runDir /projects/rmorin_scratch/BC_ctDNA_cohort/strelka/$SAMPLEID
+done
+
+
+config=$(find /projects/rmorin_scratch/BC_ctDNA_cohort/strelka/ -type f -name 'runWorkflow.py')
+
+for workflow in $config
+do 
+    $workflow -m local -j 24
+done
