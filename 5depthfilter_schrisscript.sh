@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#depth filter of 4ZZ
+
 mafFiles=$(ls /projects/rmorin_scratch/BC_ctDNA_cohort/4filtered_strelkaMAFs/*.maf)
 outDir="/projects/rmorin_scratch/BC_ctDNA_cohort/5depthfiltered_strelkaMAFs/"
 
