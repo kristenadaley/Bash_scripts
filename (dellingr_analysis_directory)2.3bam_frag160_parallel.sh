@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory/2.2BC_sample_ID_list.txt | parallel --plain --jobs 5 bash /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory/2.1samtools_bam_frag160.sh /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_analysis_directory/{}/results/{}.collapse.sort.bam /projects/rmorin_scratch/BC_ctDNA_cohort/dellingr_bam_frag160/{}_160.frag.bam
